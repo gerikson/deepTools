@@ -54,16 +54,18 @@ jobs:
           toolchain: stable
           profile: minimal
           override: true
+      - name: Set up virtual environment
+        run: python -m venv venv
+      - name: Activate virtual environment
+        run: source venv/bin/activate
       - name: Install maturin
         run: pip install maturin
       - name: Build with maturin
         run: maturin develop
-      - name: pip install
-        run: |
-          pip install .[actions]
+      - name: Install Python dependencies
+        run: pip install .[actions]
       - name: Test deepTools
-        run: |
-          pytest -v
+        run: pytest -v
       - name: Build wheel
         run: |
           python -m build
@@ -85,13 +87,15 @@ jobs:
         toolchain: stable
         profile: minimal
         override: true
+    - name: Set up virtual environment
+      run: python -m venv venv
+    - name: Activate virtual environment
+      run: source venv/bin/activate
     - name: Install maturin
       run: pip install maturin
     - name: Build with maturin
       run: maturin develop
-    - name: pip install
-      run: |
-        pip install .[actions]
+    - name: Install Python dependencies
+      run: pip install .[actions]
     - name: Test deepTools
-      run: |
-        pytest -v
+      run: pytest -v
