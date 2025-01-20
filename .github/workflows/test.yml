@@ -51,6 +51,7 @@ jobs:
       - name: pip install
         run: |
           pip install .[actions]
+          maturin build --release
       - name: Test deepTools
         run: |
           pytest -v
@@ -72,6 +73,7 @@ jobs:
     - name: pip install
       run: |
         pip install .[actions]
+        maturin build --release
     - name: Test deepTools
       run: |
         pytest -v
