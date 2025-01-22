@@ -78,7 +78,7 @@ def test_r_alignmentsieve_with_shift():
     expected_content = [
         "#bamFilterReads --filterMetrics",
         "#File\tReads\tRemaining Total\tInitial Reads",
-        "test_paired.bam\t27\t49"
+        "test_paired.bam\t49\t49"
     ]
 
     with open(filter_metrics, 'r') as f:
@@ -90,6 +90,7 @@ def test_r_alignmentsieve_with_shift():
     # Strip newline characters from the lines
     lines = [line.strip() for line in lines]
 
+    assert lines == expected_content
 
 
 def test_r_alignmentsieve_with_filtering():
@@ -131,3 +132,5 @@ def test_r_alignmentsieve_with_filtering():
 
     # Strip newline characters from the lines
     lines = [line.strip() for line in lines]
+
+    assert lines == expected_content
